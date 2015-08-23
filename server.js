@@ -15,6 +15,7 @@ var config = new secret();
 
 var authController = require('./controllers/auth');
 var userController = require('./controllers/user');
+var fileRouter = require('./routers/fileRouter');
 
 mongoose.connect(config.db);
 mongoose.connection.on('error', function(err) {
@@ -28,6 +29,7 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // Force HTTPS on Heroku
 if (app.get('env') === 'production') {
